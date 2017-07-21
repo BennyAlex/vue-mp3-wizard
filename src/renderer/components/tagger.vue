@@ -33,10 +33,10 @@
     computed: {},
     methods: {
       tagButtonClick() {
-        this.$store.commit('set_dialog_open')
-        this.$store.commit('set_is_loading')
+        this.$store.commit('set_dialog_open', true)
+        this.$store.commit('set_is_loading', true)
         Mp3Wizard.tag(this.folder).then(res => {
-          this.$store.commit('set_is_not_loading')
+          this.$store.commit('set_is_loading', false)
           console.log('fertig: ', res)
         })
       }

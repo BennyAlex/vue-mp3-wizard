@@ -51,4 +51,21 @@ export default class Mp3Wizard {
       })
     })
   }
+
+  static async renamePreview (folderPath) {
+    return await loadFilesFromFolder(folderPath).then(files =>
+      Promise.all(files.map(
+        file => {
+          return new Promise(resolve => {
+            Renamer.getNewFileName(file).then(res => {
+              if (res.newName) {
+                return resolve({oldFilePath: file, newFileName: res.newName})
+              }
+              else return resolve()
+            })
+          })
+        })
+      )
+    )
+  }
 }

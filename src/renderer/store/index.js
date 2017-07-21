@@ -10,20 +10,12 @@ export default new Vuex.Store({
   },
 
   mutations: {
-    set_is_loading (state) {
-      state.isLoading = true
+    set_is_loading (state, payload) {
+      state.isLoading = payload
     },
 
-    set_is_not_loading (state) {
-      state.isLoading = false
-    },
-
-    set_dialog_open (state) {
-      state.dialogOpen = true
-    },
-
-    set_dialog_not_open (state) {
-      state.dialogOpen = false
+    set_dialog_open (state, payload) {
+      state.dialogOpen = payload
     },
 
     set_dark_mode (state, payload) {

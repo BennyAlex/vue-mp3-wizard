@@ -1,20 +1,25 @@
 <template>
     <span>
-    <v-toolbar class='orange darken-1' dark card>
-        <v-layout row align-center>
-            <v-flex xs6>SETTINGS</v-flex>
+    <v-toolbar class='orange darken-1' card>
+        <v-layout row style="width: 100%">
+           <v-flex xs4><v-btn icon><v-icon
+                   v-bind:class="[dark ? 'white--text' : 'black--text']">arrow_back</v-icon></v-btn></v-flex>
+            <v-flex xs4 v-bind:class="[dark ? 'white--text' : 'black--text']"
+                    style="text-align: center; height: 48px;line-height: 48px">SETTINGS</v-flex>
+            <v-flex xs4></v-flex>
         </v-layout>
-
-
     </v-toolbar>
 
     <card title="Settings">
         <div slot="content">
             <v-layout row align-center>
-                <v-btn @click="dark = false" class="grey darken-3" :disabled="!dark">Switch to lightmode<v-icon class="pl-2">wb_sunny</v-icon></v-btn>
-                <v-btn @click="dark = true" class="grey--text text--darken-4 grey lighten-3" :disabled="dark">Switch to darkmode<v-icon
-                        class='grey--text text--darken-4 pl-2'>brightness_2</v-icon></v-btn>
+                <v-btn @click="dark = false" class="grey darken-3" :disabled="!dark">lightmode<v-icon
+                        right>wb_sunny</v-icon></v-btn>
+                <v-btn @click="dark = true" class="grey--text text--darken-4 grey lighten-3" :disabled="dark">darkmode<v-icon
+                        class='grey--text text--darken-4' right>brightness_2</v-icon></v-btn>
                 </v-layout>
+
+            <color-picker></color-picker>
         </div>
 
         <!--
@@ -33,8 +38,11 @@
 
 <script>
   import Card from './card'
+  import ColorPicker from './colorPicker'
   export default {
-    components: {Card},
+    components: {
+      ColorPicker,
+      Card},
     name: 'settings',
     data() {
       return {

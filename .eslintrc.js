@@ -44,5 +44,6 @@ module.exports = {
     'indent': ['warn', 2],
     'brace-style': [2, 'stroustrup', { 'allowSingleLine': true }],
     'promise/param-names': 0,
+    'no-return-await': 0
   }
 }

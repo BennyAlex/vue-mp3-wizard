@@ -1,5 +1,5 @@
 <template>
-  <div style="margin: 25px">
+  <div :style="{margin: noMargin ? 0 : '25px' }">
     <v-card class="grey lighten-3 black--text" raised>
       <v-card-title primary-title>
         <div>
@@ -32,6 +32,6 @@
 <script>
   export default {
     name: 'card',
-    props: ['title', 'subtitle']
+    props: ['title', 'subtitle', 'noMargin']
   }
 </script>

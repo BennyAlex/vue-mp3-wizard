@@ -63,16 +63,16 @@
         get() {
           return this.$store.state.isLoading
         },
-        set() {
-          this.$store.commit('set_is_not_loading')
+        set(value) {
+          this.$store.commit('set_is_loading', value)
         }
       },
       dialogOpen: {
         get() {
           return this.$store.state.dialogOpen
         },
-        set() {
-          this.$store.commit('set_dialog_not_open')
+        set(value) {
+          this.$store.commit('set_dialog_open', value)
         }
       },
       dark: {

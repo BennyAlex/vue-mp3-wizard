@@ -42,7 +42,7 @@ const loadFilesFromFolder = (folderPath, ignoreFolder, onlyExt) => {
         reject('error:', error.message, 'file:', item.path)
       })
       .on('end', function () {
-        resolve(items) // array of files without directories
+        return resolve(items) // array of files without directories
       })
   })
 }
