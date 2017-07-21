@@ -1,0 +1,88 @@
+.app-draggable {
+  -webkit-app-region: drag;
+  cursor: default;
+}
+
+.app-dragginable {
+  -webkit-app-region: no-drag;
+}
+
+.no-padding {
+  padding: 0 !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.disabled, .inactive {
+  cursor: not-allowed;
+}
+
+.no-text-highlight, .app-draggable, .app-dragginable, #app {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline-style: none;
+  -webkit-touch-callout: none;
+  cursor: default;
+}
+
+.tabs__items, .tabs__item {
+  color: #fff;
+}
+
+.tabs__items, .tabs__item, .tabs__item.tabs__item--active, .tabs__content  {
+  border: none !important;
+}
+
+.tabs__item {
+  color: #000;
+}
+
+.tabs__item.tabs__item--active {
+  font-weight: 700;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.font-17 {
+  font-size: 17px;
+}
+
+html {
+  border: 1px solid #414141;
+}
+
+.theme--light.tabs .tabs__item.tabs__item--active, .application .theme--light.tabs .tabs__item.tabs__item--active {
+  color: #000 !important;
+}
+
+.application--dark {
+  background: #555555;
+}
+
+.application--light {
+  background: #cdcdcd;
+}
+
+html, body, #app{
+  -ms-overflow-style: none;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+button {
+  cursor: pointer !important;
+}
