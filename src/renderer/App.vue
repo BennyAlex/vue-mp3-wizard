@@ -1,19 +1,7 @@
 <template>
     <div id='app'>
         <v-app :dark="dark" :light="!dark">
-            <navbar>
-                <v-btn icon class='app-dragginable' @click="minimizeApp" slot="icon-left">
-                    <v-icon v-bind:class="[dark ? 'white--text' : 'black--text']">remove</v-icon>
-                </v-btn>
-
-                <v-btn icon class='app-dragginable' @click="settingsClick" slot="icon-center">
-                    <v-icon v-bind:class="[dark ? 'white--text' : 'black--text']">settings</v-icon>
-                </v-btn>
-
-                <v-btn icon class='app-dragginable' @click="exitApp" slot="icon-right">
-                    <v-icon v-bind:class="[dark ? 'white--text' : 'black--text']">close</v-icon>
-                </v-btn>
-            </navbar>
+            <navbar :buttons="navbarButtons"></navbar>
 
             <router-view></router-view>
 
@@ -57,6 +45,20 @@
     name: 'mp3-wizard',
     components: {
       Navbar
+    },
+    data() {
+      return {
+        navbarButtons: [{
+          icon: 'remove',
+          onClick: this.minimizeApp
+        }, {
+          icon: 'settings',
+          onClick: this.settingsClick
+        }, {
+          icon: 'close',
+          onClick: this.exitApp
+        }]
+      };
     },
     computed: {
       isLoading: {
