@@ -2,22 +2,22 @@
     <v-tabs :dark="dark" :light="!dark" grow :scrollable='false' id='navbar'>
         <v-tabs-bar slot='activators' class='orange darken-1'>
             <v-tabs-slider v-bind:class="[dark ? 'white' : 'black']"></v-tabs-slider>
-            <v-tabs-item v-bind:class="[dark ? 'white--text' : 'black--text']" href='#tab-1'
-                         style="margin-left: 75px; margin-right: 70px">
-                Renamer
-            </v-tabs-item>
-            <v-tabs-item v-bind:class="[dark ? 'white--text' : 'black--text']" href='#tab-2'
-                         style="margin-left: 70px; margin-right: 75px">
-                Tagger
+            <v-tabs-item
+                v-for="tab in tabs"
+                :key="tab"
+                :href="`#${tab}`"
+                v-bind:class="[dark ? 'white--text' : 'black--text']"
+            >
+                {{ tab }}
             </v-tabs-item>
         </v-tabs-bar>
 
-        <v-tabs-content id='tab-1'>
+        <v-tabs-content id='renamer'>
             <v-container fluid>
                 <renamer></renamer>
             </v-container>
         </v-tabs-content>
-        <v-tabs-content id='tab-2'>
+        <v-tabs-content id='tagger'>
             <v-container fluid>
                 <tagger></tagger>
             </v-container>
@@ -30,6 +30,11 @@
   import Renamer from './renamer'
   export default {
     name: 'tabs',
+    data() {
+      return {
+        tabs: ['renamer', 'tagger']
+      };
+    },
     computed: {
       dark: {
         get() {
