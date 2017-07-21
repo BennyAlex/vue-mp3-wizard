@@ -6,7 +6,7 @@
                     <v-icon v-bind:class="[dark ? 'white--text' : 'black--text']">remove</v-icon>
                 </v-btn>
 
-                <v-btn icon class='app-dragginable' to="settings" slot="icon-center">
+                <v-btn icon class='app-dragginable' @click="settingsClick" slot="icon-center">
                     <v-icon v-bind:class="[dark ? 'white--text' : 'black--text']">settings</v-icon>
                 </v-btn>
 
@@ -93,6 +93,13 @@
         const app = require('electron').remote.app
         if (this.$store.state.isLoading) alert('There is a running process, please wait')
         else app.quit()
+      },
+      settingsClick() {
+        if (this.$route.name !== 'settings') {
+          this.$router.push({ name: 'settings' })
+          return
+        }
+        this.$router.go(-1)
       }
     }
   }
