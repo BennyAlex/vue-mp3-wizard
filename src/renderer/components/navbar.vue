@@ -13,9 +13,6 @@
             {{ button.icon }}
           </v-icon>
         </v-btn>
-        <slot name="icon-left"></slot>
-        <slot name="icon-center"></slot>
-        <slot name="icon-right"></slot>
     </v-toolbar>
 </template>
 
