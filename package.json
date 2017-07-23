@@ -1,6 +1,6 @@
 {
   "name": "mp3-wizard",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "author": "Benjamin Franz <benjamin.franz@mainpost.de>",
   "description": "An electron-vue project",
   "license": null,

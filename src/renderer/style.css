@@ -41,10 +41,6 @@
     font-size: 17px;
 }
 
-html {
-    border: 1px solid #414141;
-}
-
 .tabs__items, .tabs__item, .tabs__item.tabs__item--active, .tabs__content {
     border: none !important;
 }
