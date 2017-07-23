@@ -12,13 +12,13 @@
         <div slot="content">
             <v-layout row wrap>
                 <ColorPickerDialog label="Select font color">
-                    <ColorPicker v-model="fcolor"></ColorPicker>
+                    <ColorPicker v-model="fcolor" slot></ColorPicker>
                 </ColorPickerDialog>
                 <ColorPickerDialog label="Select main color">
-                    <ColorPicker v-model="maincolor"></ColorPicker>
+                    <ColorPicker v-model="maincolor" slot></ColorPicker>
                 </ColorPickerDialog>
                 <ColorPickerDialog label="Select background color">
-                    <ColorPicker v-model="bgcolor"></ColorPicker>
+                    <ColorPicker v-model="bgcolor" slot></ColorPicker>
                 </ColorPickerDialog>
             </v-layout>
         </div>
