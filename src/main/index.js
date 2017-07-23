@@ -20,13 +20,13 @@ const winURL = isDev() ? `http://localhost:9080` : `file://${__dirname}/index.ht
 function createWindow () {
   let options = {
     title: 'mp3-wizard',
-    width: 880,
+    width: 850,
     height: 610,
     show: false,
     backgroundColor: '#5a5a5a',
     frame: false,
-    minWidth: 630,
-    minHeight: 450,
+    minWidth: 682,
+    minHeight: 460,
     maxWidth: 880,
     maxHeight: 610,
     center: true,

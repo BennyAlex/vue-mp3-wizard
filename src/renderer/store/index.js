@@ -8,7 +8,7 @@ export default new Vuex.Store({
     dialogOpen: false,
     mainColor: '#fb8c00',
     fontColor: 'black',
-    bgColor: '#666'
+    bgColor: '#bbb'
   },
 
   mutations: {

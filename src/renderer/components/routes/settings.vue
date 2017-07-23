@@ -11,16 +11,14 @@
     <card title="Settings">
         <div slot="content">
             <v-layout row justify-center>
-                <color-picker label="Select font color" :color.sync="fcolor" :whiteAllowed="!whiteBgActive"
-                              :blackAllowed="!blackBgActive"></color-picker>
+                <color-picker label="Select font color" :color.sync="fcolor"
+                              :hiddenColors="hiddenFontColors"></color-picker>
 
+            <color-picker label="Select main color" :color.sync="maincolor"
+                          :hiddenColors="hiddenMainColors"></color-picker>
 
-
-            <color-picker label="Select main color" :color.sync="maincolor" :blackAllowed="!blackFontActive"
-                          :whiteAllowed="!whiteFontActive"></color-picker>
-
-                <color-picker label="Select background color" :color.sync="bgcolor" blackAllowed="true"
-                          whiteAllowed="true"></color-picker>
+                <color-picker label="Select background color" :color.sync="bgcolor" :hiddenColors="['white']"
+                              :additionalColors="['#ddd', '#bbb', '#999', '#777', '#555', '#333']"></color-picker>
                 </v-layout>
         </div>
       <!--
@@ -47,17 +45,37 @@
     },
     name: 'settings',
     computed: {
-      blackBgActive() {
-        return this.bgcolor === 'black'
+      mainColorIsDark() {
+        return this.maincolor === 'black' || this.maincolor === '#333' || this.maincolor === '#444' || this.maincolor === '#555' || this.maincolor === '#666' || this.maincolor === 'blue'
       },
-      blackFontActive() {
-        return this.fcolor === 'black'
+      fontColorIsDark() {
+        return this.fcolor === 'black' || this.fcolor === '#333' || this.fcolor === '#444' || this.fcolor === '#555' || this.fcolor === '#666' || this.fcolor === 'blue'
       },
-      whiteBgActive() {
-        return this.bgcolor === 'white'
+      mainColorIsLight() {
+        return this.maincolor === 'white' || this.maincolor === '#bbb' || this.maincolor === '#ccc' || this.maincolor === '#ddd' || this.maincolor === 'yellow'
       },
-      whiteFontActive() {
-        return this.fcolor === 'white'
+      fontColorIsLight() {
+        return this.fcolor === 'white' || this.fcolor === '#bbb' || this.fcolor === '#ccc' || this.fcolor === '#ddd' || this.fcolor === 'yellow'
+      },
+      hiddenFontColors() {
+        const colors = [this.maincolor]
+        if (this.mainColorIsLight) {
+          colors.push('yellow', 'white')
+        }
+        if (this.mainColorIsDark) {
+          colors.push('black', 'blue')
+        }
+        return colors
+      },
+      hiddenMainColors() {
+        const colors = [this.fontcolor]
+        if (this.fontColorIsLight) {
+          colors.push('yellow', 'white')
+        }
+        if (this.fontColorIsDark) {
+          colors.push('black', 'blue')
+        }
+        return colors
       },
       maincolor: {
         get() {
