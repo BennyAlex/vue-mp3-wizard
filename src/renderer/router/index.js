@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+
+import { index, preview, settings } from '@/components/routes'
+
 Vue.use(Router)
 
 export default new Router({
@@ -7,17 +10,17 @@ export default new Router({
     {
       path: '/',
       name: 'index',
-      component: require('@/components/routes/index')
+      component: index
     },
     {
       path: '/preview',
       name: 'preview',
-      component: require('@/components/routes/preview')
+      component: preview
     },
     {
       path: '/settings',
       name: 'settings',
-      component: require('@/components/routes/settings')
+      component: settings
     },
     {
       path: '*',
