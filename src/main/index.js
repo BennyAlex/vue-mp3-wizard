@@ -27,8 +27,6 @@ function createWindow () {
     frame: false,
     minWidth: 682,
     minHeight: 460,
-    maxWidth: 880,
-    maxHeight: 610,
     center: true,
     fullscreen: false,
     icon: './icon.png'
