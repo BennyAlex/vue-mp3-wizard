@@ -9,7 +9,7 @@
   export default {
     name: 'folderSelect',
     props: {
-      foler: {
+      folder: {
         type: String,
         required: true
       }

@@ -6,7 +6,7 @@
   export default {
     name: 'FolderSelectButton',
     props: {
-      foler: {
+      folder: {
         type: String,
         required: true
       }

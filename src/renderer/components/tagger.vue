@@ -26,7 +26,7 @@
     name: 'tagger',
     data() {
       return {
-        folder: null,
+        folder: '',
         dialogOpen: false
       }
     },

@@ -28,7 +28,7 @@
   import Tagger from '../tagger'
   import Renamer from '../renamer'
   export default {
-    name: 'tabs',
+    name: 'start',
     data() {
       return {
         tabs: ['renamer', 'tagger']

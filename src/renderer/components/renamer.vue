@@ -25,7 +25,7 @@
     name: 'renamer',
     data() {
       return {
-        folder: null
+        folder: ''
       }
     },
     computed: {
