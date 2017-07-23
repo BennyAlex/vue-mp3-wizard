@@ -11,15 +11,11 @@
     <card title="Settings">
         <div slot="content">
             <v-layout row wrap>
-                <ColorPickerDialog label="Select font color">
-                    <ColorPicker v-model="fcolor" slot></ColorPicker>
-                </ColorPickerDialog>
-                <ColorPickerDialog label="Select main color">
-                    <ColorPicker v-model="maincolor" slot></ColorPicker>
-                </ColorPickerDialog>
-                <ColorPickerDialog label="Select background color">
-                        <ColorPicker v-model="bgcolor" slot></ColorPicker>
-                </ColorPickerDialog>
+                <color-picker label="Select font color" v-model="fcolor"></color-picker>
+
+                <color-picker label="Select main color" v-model="maincolor"></color-picker>
+
+                <color-picker label="Select background color" v-model="bgcolor"></color-picker>
             </v-layout>
         </div>
     </card>
@@ -28,12 +24,10 @@
 
 <script>
   import Card from '../card'
-  import ColorPickerDialog from '../ColorPickerDialog'
-  import {ColorPicker} from '../ColorPicker/index'
+  import {ColorPicker} from '../ColorPicker'
 
   export default {
     components: {
-      ColorPickerDialog,
       ColorPicker,
       Card
     },

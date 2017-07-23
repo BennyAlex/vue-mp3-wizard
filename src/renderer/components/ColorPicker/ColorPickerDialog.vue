@@ -1,7 +1,6 @@
 <template>
   <span>
-    <v-btn @click.stop="isOpen = true">{{label}}</v-btn>
-
+    <v-btn @click.stop="isOpen = true" :style="{background: color || '#222', color: 'white'}">{{label}}</v-btn>
     <v-layout row justify-center>
       <v-dialog v-model="isOpen">
         <card title="Choose a color" :noMargin="true">
@@ -15,7 +14,7 @@
 </template>
 
 <script>
-  import Card from './card'
+  import Card from '../card'
 
   export default {
     components: {
@@ -26,14 +25,17 @@
       label: {
         type: String,
         required: true
+      },
+      color: {
+        type: String,
+        required: false
       }
     },
     data() {
       return {
         isOpen: false
       }
-    },
-    methods: {}
+    }
   }
 </script>
 
