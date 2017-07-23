@@ -10,16 +10,17 @@
     </v-toolbar>
     <card title="Settings">
         <div slot="content">
-            <v-layout row justify-center>
-                <color-picker label="Select font color" :color.sync="fcolor"
-                              :hiddenColors="hiddenFontColors"></color-picker>
-
-            <color-picker label="Select main color" :color.sync="maincolor"
-                          :hiddenColors="hiddenMainColors"></color-picker>
-
-                <color-picker label="Select background color" :color.sync="bgcolor" :hiddenColors="['white']"
-                              :additionalColors="['#ddd', '#bbb', '#999', '#777', '#555', '#333']"></color-picker>
-                </v-layout>
+            <v-layout row wrap>
+                <ColorPickerDialog label="Select font color">
+                    <ColorPicker v-model="fcolor"></ColorPicker>
+                </ColorPickerDialog>
+                <ColorPickerDialog label="Select main color">
+                    <ColorPicker v-model="maincolor"></ColorPicker>
+                </ColorPickerDialog>
+                <ColorPickerDialog label="Select background color">
+                    <ColorPicker v-model="bgcolor"></ColorPicker>
+                </ColorPickerDialog>
+            </v-layout>
         </div>
       <!--
       <v-btn flat class="orange&#45;&#45;text text&#45;&#45;darken-2"
@@ -37,9 +38,12 @@
 
 <script>
   import Card from '../card'
-  import ColorPicker from '../colorPicker'
+  import ColorPickerDialog from '../ColorPickerDialog'
+  import { ColorPicker } from '../ColorPicker/index'
+
   export default {
     components: {
+      ColorPickerDialog,
       ColorPicker,
       Card
     },
