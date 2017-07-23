@@ -4,7 +4,7 @@
 
     <folder-select-button :folder.sync="folder" slot="action-left"></folder-select-button>
 
-    <v-btn outline round @click.stop="tagButtonClick" class="orange--text text--darken-2" :disabled="!folder"
+    <v-btn outline round @click.stop="tagButtonClick" :style="{color: btncolor}" :disabled="!folder"
            slot="action-right">
       Tag
     </v-btn>
@@ -30,7 +30,27 @@
         dialogOpen: false
       }
     },
-    computed: {},
+    computed: {
+      btncolor() {
+        return this.bgcolor !== 'white' ? this.bgcolor : this.fcolor
+      },
+      bgcolor: {
+        get() {
+          return this.$store.state.backgroundColor
+        },
+        set(value) {
+          this.$store.commit('set_bg_color', value)
+        }
+      },
+      fcolor: {
+        get() {
+          return this.$store.state.fontColor
+        },
+        set(value) {
+          this.$store.commit('set_font_color', value)
+        }
+      }
+    },
     methods: {
       tagButtonClick() {
         this.$store.commit('set_dialog_open', true)

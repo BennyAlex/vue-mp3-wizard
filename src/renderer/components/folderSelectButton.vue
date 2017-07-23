@@ -1,5 +1,5 @@
 <template>
-  <v-btn flat @click="chooseFolder" class="orange--text text--darken-2">Open Folder</v-btn>
+  <v-btn flat @click="chooseFolder" :style="{color: btncolor}">Open Folder</v-btn>
 </template>
 
 <script>
@@ -11,6 +11,27 @@
         const {dialog} = require('electron').remote
         let folder = dialog.showOpenDialog({properties: ['openDirectory']})
         if (folder) this.$emit('update:folder', folder[0])
+      }
+    },
+    computed: {
+      btncolor() {
+        return this.bgcolor !== 'white' ? this.maincolor : this.fcolor
+      },
+      fcolor: {
+        get() {
+          return this.$store.state.fontColor
+        },
+        set(value) {
+          this.$store.commit('set_font_color', value)
+        }
+      },
+      maincolor: {
+        get() {
+          return this.$store.state.mainColor
+        },
+        set(value) {
+          this.$store.commit('set_main_color', value)
+        }
       }
     }
   }

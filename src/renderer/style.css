@@ -11,7 +11,7 @@
     padding: 0 !important;
 }
 
-.cursor-pointer, button, a {
+.cursor-pointer, button, a, .color {
     cursor: pointer !important;
 }
 
@@ -33,22 +33,6 @@
     cursor: default;
 }
 
-.tabs__items, .tabs__item {
-    color: #fff;
-}
-
-.tabs__items, .tabs__item, .tabs__item.tabs__item--active, .tabs__content {
-    border: none !important;
-}
-
-.tabs__item {
-    color: #000;
-}
-
-.tabs__item.tabs__item--active {
-    font-weight: 700;
-}
-
 .font-16 {
     font-size: 16px;
 }
@@ -61,16 +45,8 @@ html {
     border: 1px solid #414141;
 }
 
-.theme--light.tabs .tabs__item.tabs__item--active, .application .theme--light.tabs .tabs__item.tabs__item--active {
-    color: #000 !important;
-}
-
-.application--dark {
-    background: #555555;
-}
-
-.application--light {
-    background: #cdcdcd;
+.tabs__items, .tabs__item, .tabs__item.tabs__item--active, .tabs__content {
+    border: none !important;
 }
 
 html, body, #app {
@@ -86,4 +62,12 @@ html, body, #app {
 .toolbar-title {
     font-size: 1em;
     font-weight: 500;
+}
+
+.default-color {
+    background: #fb8c00;
+}
+
+.default-color-text {
+    color: #fb8c00;
 }

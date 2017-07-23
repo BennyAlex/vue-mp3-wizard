@@ -4,7 +4,7 @@
 
         <folder-select-button :folder.sync="folder" slot="action-left"></folder-select-button>
 
-        <v-btn outline round @click.stop="renameButtonClick" class="orange--text text--darken-2" :disabled="!folder"
+        <v-btn outline round @click.stop="renameButtonClick" :style="{color: btncolor}" :disabled="!folder"
                slot="action-right">
             Rename
         </v-btn>
@@ -26,6 +26,27 @@
     data() {
       return {
         folder: null
+      }
+    },
+    computed: {
+      btncolor() {
+        return this.bgcolor !== 'white' ? this.bgcolor : this.fcolor
+      },
+      bgcolor: {
+        get() {
+          return this.$store.state.backgroundColor
+        },
+        set(value) {
+          this.$store.commit('set_bg_color', value)
+        }
+      },
+      fcolor: {
+        get() {
+          return this.$store.state.fontColor
+        },
+        set(value) {
+          this.$store.commit('set_font_color', value)
+        }
       }
     },
     methods: {

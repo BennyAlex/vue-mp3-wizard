@@ -9,11 +9,7 @@
       </v-card-title>
 
       <v-container fluid grid-list-lg>
-        <v-layout row>
-          <v-flex xs8>
-            <slot name="content"></slot>
-          </v-flex>
-        </v-layout>
+        <slot name="content"></slot>
       </v-container>
 
       <v-card-actions style="width: 100%">

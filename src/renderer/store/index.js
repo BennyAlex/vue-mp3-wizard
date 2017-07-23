@@ -6,7 +6,9 @@ export default new Vuex.Store({
   state: {
     isLoading: false,
     dialogOpen: false,
-    darkMode: false
+    mainColor: '#fb8c00',
+    fontColor: 'black',
+    bgColor: '#666'
   },
 
   mutations: {
@@ -18,8 +20,16 @@ export default new Vuex.Store({
       state.dialogOpen = payload
     },
 
-    set_dark_mode (state, payload) {
-      state.darkMode = payload
+    set_font_color (state, payload) {
+      state.fontColor = payload
+    },
+
+    set_bg_color (state, payload) {
+      state.bgColor = payload
+    },
+
+    set_main_color (state, payload) {
+      state.mainColor = payload
     }
   },
 

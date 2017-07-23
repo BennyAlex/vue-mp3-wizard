@@ -1,6 +1,6 @@
 <template>
     <div id='app'>
-        <v-app :dark="dark" :light="!dark">
+        <v-app :style="{background: bgcolor}">
             <navbar :buttons="navbarButtons"></navbar>
 
             <router-view></router-view>
@@ -77,12 +77,12 @@
           this.$store.commit('set_dialog_open', value)
         }
       },
-      dark: {
+      bgcolor: {
         get() {
-          return this.$store.state.darkMode
+          return this.$store.state.bgColor
         },
         set(value) {
-          this.$store.commit('set_dark_mode', value)
+          this.$store.commit('set_bg_color', value)
         }
       }
     },

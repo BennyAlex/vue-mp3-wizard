@@ -1,19 +1,19 @@
 <template>
-    <v-toolbar class='orange darken-1 app-draggable' dark dense>
-        <v-toolbar-title v-bind:class="[dark ? 'white--text' : 'black--text']">mp3-wizard
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
-        <v-btn icon
-          v-for="button in buttons"
-          :key="button.icon"
-          class='app-dragginable'
-          @click="button.onClick"
-        >
-          <v-icon v-bind:class="[dark ? 'white--text' : 'black--text']">
-            {{ button.icon }}
-          </v-icon>
-        </v-btn>
-    </v-toolbar>
+  <v-toolbar class='app-draggable' dense :style="{background: maincolor}" id="navbar">
+    <v-toolbar-title :style="{color: fcolor}">mp3-wizard
+    </v-toolbar-title>
+    <v-spacer></v-spacer>
+    <v-btn icon
+           v-for="button in buttons"
+           :key="button.icon"
+           class='app-dragginable'
+           @click="button.onClick"
+    >
+      <v-icon :style="{color: fcolor}">
+        {{ button.icon }}
+      </v-icon>
+    </v-btn>
+  </v-toolbar>
 </template>
 
 <script>
@@ -26,12 +26,28 @@
       }
     },
     computed: {
-      dark: {
+      bgcolor: {
         get() {
-          return this.$store.state.darkMode
+          return this.$store.state.bgColor
         },
         set(value) {
-          this.$store.commit('set_dark_mode', value)
+          this.$store.commit('set_bg_color', value)
+        }
+      },
+      fcolor: {
+        get() {
+          return this.$store.state.fontColor
+        },
+        set(value) {
+          this.$store.commit('set_font_color', value)
+        }
+      },
+      maincolor: {
+        get() {
+          return this.$store.state.mainColor
+        },
+        set(value) {
+          this.$store.commit('set_main_color', value)
         }
       }
     }
