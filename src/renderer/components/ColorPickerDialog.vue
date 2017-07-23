@@ -2,10 +2,14 @@
   <div>
     <v-btn @click.stop="isOpen = true">{{label}}</v-btn>
 
+    <slot></slot>
+
     <v-layout row justify-center>
       <v-dialog v-model="isOpen">
         <card title="Choose a color" :noMargin="true">
-          <slot></slot>
+          <div slot="content">
+          <slot name="content"></slot>
+          </div>
         </card>
       </v-dialog>
     </v-layout>
@@ -31,8 +35,7 @@
         isOpen: false
       }
     },
-    methods: {
-    }
+    methods: {}
   }
 </script>
 
