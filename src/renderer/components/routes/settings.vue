@@ -22,16 +22,6 @@
                 </ColorPickerDialog>
             </v-layout>
         </div>
-      <!--
-      <v-btn flat class="orange&#45;&#45;text text&#45;&#45;darken-2"
-             slot="action-left">
-          cancel
-      </v-btn>
-      <v-btn outline round class="orange&#45;&#45;text text&#45;&#45;darken-2"
-             slot="action-right">
-          save
-      </v-btn>
-      -->
     </card>
     </span>
 </template>

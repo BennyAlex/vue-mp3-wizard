@@ -8,7 +8,7 @@
       <v-dialog v-model="isOpen">
         <card title="Choose a color" :noMargin="true">
           <div slot="content">
-          <slot name="content"></slot>
+            <slot name="content"></slot>
           </div>
         </card>
       </v-dialog>
