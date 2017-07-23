@@ -3,8 +3,8 @@
     <v-card class="grey lighten-3 black--text" raised>
       <v-card-title primary-title>
         <div>
-          <div class="headline">{{title}}</div>
-          <span class="grey--text text--darken-1 font-17">{{subtitle}}</span>
+          <div class="headline" v-if="title">{{title}}</div>
+          <span class="grey--text text--darken-1 font-17" v-if="subtitle">{{subtitle}}</span>
         </div>
       </v-card-title>
 
@@ -28,6 +28,19 @@
 <script>
   export default {
     name: 'card',
-    props: ['title', 'subtitle', 'noMargin']
+    props: {
+      title: {
+        type: String,
+        required: false
+      },
+      subtitle: {
+        type: String,
+        required: false
+      },
+      noMargin: {
+        type: Boolean,
+        required: false
+      }
+    }
   }
 </script>

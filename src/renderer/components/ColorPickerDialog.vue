@@ -1,19 +1,17 @@
 <template>
-  <div>
+  <span>
     <v-btn @click.stop="isOpen = true">{{label}}</v-btn>
-
-    <slot></slot>
 
     <v-layout row justify-center>
       <v-dialog v-model="isOpen">
         <card title="Choose a color" :noMargin="true">
           <div slot="content">
-            <slot name="content"></slot>
+            <slot></slot>
           </div>
         </card>
       </v-dialog>
     </v-layout>
-  </div>
+  </span>
 </template>
 
 <script>

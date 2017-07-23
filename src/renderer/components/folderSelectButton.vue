@@ -5,7 +5,12 @@
 <script>
   export default {
     name: 'FolderSelectButton',
-    props: ['folder'],
+    props: {
+      foler: {
+        type: String,
+        required: true
+      }
+    },
     methods: {
       chooseFolder() {
         const {dialog} = require('electron').remote

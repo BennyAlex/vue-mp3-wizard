@@ -8,6 +8,11 @@
 <script>
   export default {
     name: 'folderSelect',
-    props: ['folder']
+    props: {
+      foler: {
+        type: String,
+        required: true
+      }
+    }
   }
 </script>
