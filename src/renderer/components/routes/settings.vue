@@ -1,6 +1,6 @@
 <template>
     <span>
-    <v-toolbar :style="{background: maincolor}" card>
+    <v-toolbar :style="{background: maincolor}" card dense>
         <v-layout row style="width: 100%">
            <v-flex xs4><v-btn icon to="index" :style="{color: fcolor}"><v-icon>arrow_back</v-icon></v-btn></v-flex>
             <v-flex xs4 style="text-align: center; height: 48px;line-height: 48px"
