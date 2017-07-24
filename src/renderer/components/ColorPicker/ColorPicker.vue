@@ -1,67 +1,73 @@
 <template>
   <div>
-    <color-picker-dialog :label="label || 'Choose a color'" :color="value2">
-      <color-picker-content v-model="value2" slot></color-picker-content>
-    </color-picker-dialog>
+    <div
+      v-for="(color, i) in colors"
+      :key="color"
+      @click="click(color, i)"
+      class="color"
+      :style="{background: color}"
+      :class="{color: true, selected: color === value}"
+    ></div>
   </div>
 </template>
 
 <script>
-  import ColorPickerDialog from './ColorPickerDialog';
-  import ColorPickerContent from './ColorPickerContent';
+import defaultPalette from './defaultPalette'
 
-  export default {
-    components: {
-      ColorPickerContent,
-      ColorPickerDialog
+export default {
+  name: 'color-picker-content',
+  props: {
+    palette: {
+      type: Array,
+      default: () => defaultPalette
     },
-    name: 'color-picker',
-    props: {
-      label: {
-        type: String,
-        required: false
-      },
-      value: {
-        type: String,
-        required: true
-      }
+    tints: {
+      type: Array
     },
-    computed: {
-      value2: {
-        get() {
-          return this.value
-        },
-        set(color) {
-          this.$emit('input', color)
-        }
-      }
+    defaultTint: {
+      default: 500
+    },
+    value: {
+      type: String,
+      required: true
+    }
+  },
+  methods: {
+    click(color, i) {
+      this.$emit('input', color)
+    }
+  },
+  computed: {
+    colors() {
+      return this.palette.map(p => p[this.defaultTint])
     }
   }
+}
 
 </script>
 
 <style scoped>
-  .color {
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    margin: 5px;
-    float: left;
-  }
+.color {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  margin: 5px;
+  float: left;
+}
 
-  .color:after {
-    content: '';
-    position: absolute;
-    width: 39.5px;
-    height: 39.5px;
-    border-radius: 50%;
-    margin: 5px;
-    border: 3px solid white;
-    opacity: 0;
-    transition: opacity .3s;
-  }
+.color:after {
+  content: '';
+  position: absolute;
+  width: 39.5px;
+  height: 39.5px;
+  border-radius: 50%;
+  margin: 5px;
+  border: 3px solid white;
+  opacity: 0;
+  transition: opacity .3s;
+}
 
-  .color.selected:after {
-    opacity: 1;
-  }
+.color.selected:after {
+  opacity: 1;
+}
 </style>

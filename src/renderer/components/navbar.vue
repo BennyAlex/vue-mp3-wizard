@@ -1,22 +1,20 @@
 <template>
-    <div :style="{border: '2px solid ' + maincolor}">
-        <v-toolbar class='app-draggable' dense card :style="{background: maincolor}"
-                   style="border: 1px solid rgba(0, 0, 0, 0)" id="navbar">
-            <v-toolbar-title :style="{color: fcolor}">mp3-wizard
-            </v-toolbar-title>
-            <v-spacer></v-spacer>
-            <v-btn icon
-                   v-for="button in buttons"
-                   :key="button.icon"
-                   class='app-dragginable'
-                   @click="button.onClick"
-            >
-                <v-icon :style="{color: fcolor}">
-                    {{ button.icon }}
-                </v-icon>
-            </v-btn>
-        </v-toolbar>
-    </div>
+  <div :style="{border: '2px solid ' + maincolor}">
+    <v-toolbar :style="{background: maincolor}" class='app-draggable' id="navbar" card dense>
+      <v-toolbar-title :style="{color: fcolor}">mp3-wizard</v-toolbar-title>
+      <v-spacer class='app-draggable'></v-spacer>
+      <v-btn icon
+             v-for="button in buttons"
+             :key="button.icon"
+             class='app-dragginable'
+             @click="button.onClick"
+      >
+        <v-icon :style="{color: fcolor}">
+          {{ button.icon }}
+        </v-icon>
+      </v-btn>
+    </v-toolbar>
+  </div>
 </template>
 
 <script>
@@ -56,3 +54,9 @@
     }
   }
 </script>
+
+<style scoped>
+  .toolbar--card {
+    border-radius: 0;
+  }
+</style>

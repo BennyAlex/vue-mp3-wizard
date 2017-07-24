@@ -25,8 +25,8 @@ function createWindow () {
     show: false,
     backgroundColor: '#5a5a5a',
     frame: false,
-    minWidth: 682,
-    minHeight: 460,
+    minWidth: 600,
+    minHeight: 400,
     center: true,
     fullscreen: false,
     icon: './icon.png'

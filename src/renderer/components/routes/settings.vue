@@ -1,6 +1,6 @@
 <template>
     <span>
-    <v-toolbar :style="{background: maincolor}" card dense>
+    <v-toolbar :style="{background: maincolor}" dense card>
         <v-layout row style="width: 100%">
            <v-flex xs4><v-btn icon to="index" :style="{color: fcolor}"><v-icon>arrow_back</v-icon></v-btn></v-flex>
             <v-flex xs4 style="text-align: center; height: 48px;line-height: 48px"
@@ -8,26 +8,28 @@
             <v-flex xs4></v-flex>
         </v-layout>
     </v-toolbar>
-    <card title="Settings">
-        <div slot="content">
-            <v-layout row wrap>
-                <color-picker label="Select font color" v-model="fcolor"></color-picker>
+      <v-container>
+        <card title="Settings">
+            <v-layout row align-start wrap slot="content" justify-center>
+              <color-picker-wrapper label="Select font color" v-model="fcolor"></color-picker-wrapper>
 
-                <color-picker label="Select main color" v-model="maincolor"></color-picker>
+              <color-picker-wrapper label="Select main color" v-model="maincolor"></color-picker-wrapper>
 
-                <color-picker label="Select background color" v-model="bgcolor"></color-picker>
+              <color-picker-wrapper label="Select background color" v-model="bgcolor"></color-picker-wrapper>
             </v-layout>
-        </div>
-    </card>
+        </card>
+      </v-container>
     </span>
 </template>
 
 <script>
   import Card from '../card'
   import {ColorPicker} from '../ColorPicker'
+  import ColorPickerWrapper from '../ColorPickerWrapper'
 
   export default {
     components: {
+      ColorPickerWrapper,
       ColorPicker,
       Card
     },
@@ -92,3 +94,9 @@
     }
   }
 </script>
+
+<style scoped>
+  .toolbar--card {
+    border-radius: 0;
+  }
+</style>
