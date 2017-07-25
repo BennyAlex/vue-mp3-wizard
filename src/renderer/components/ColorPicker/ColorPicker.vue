@@ -1,10 +1,16 @@
 <template>
   <div>
     <div
+      v-show="subPalette !== undefined"
+      @click="subPalette = undefined"
+      class="color icon"
+    >
+      <v-icon>arrow_back</v-icon>
+    </div>
+    <div
       v-for="(color, i) in colors"
       :key="color"
       @click="click(color, i)"
-      class="color"
       :style="{background: color}"
       :class="{color: true, selected: color === value}"
     ></div>
@@ -27,18 +33,34 @@ export default {
     defaultTint: {
       default: 500
     },
+    useSubPalette: {
+      type: Boolean,
+      default: true
+    },
     value: {
       type: String,
       required: true
     }
   },
+  data() {
+    return {
+      subPalette: undefined
+    }
+  },
   methods: {
     click(color, i) {
+      if (this.useSubPalette && this.subPalette === undefined && Object.keys(this.palette[i]).length > 1) {
+        this.subPalette = i
+        return
+      }
       this.$emit('input', color)
     }
   },
   computed: {
     colors() {
+      if (this.subPalette !== undefined) {
+        return this.palette[this.subPalette]
+      }
       return this.palette.map(p => p[this.defaultTint])
     }
   }
@@ -53,6 +75,11 @@ export default {
   border-radius: 50%;
   margin: 5px;
   float: left;
+}
+
+.color.icon {
+  line-height: 50px;
+  text-align: center;
 }
 
 .color:after {
