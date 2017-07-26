@@ -1,17 +1,17 @@
 <template>
   <v-layout row justify-center>
     <v-dialog v-model="_value" width="auto">
-      <card :title="title" :subtitle="subtitle" :centerTitle="centerTitle">
+      <my-card :title="title" :subtitle="subtitle" :centerTitle="centerTitle">
         <slot></slot>
-      </card>
+      </my-card>
     </v-dialog>
   </v-layout>
 </template>
 
 <script>
-  import Card from './my-card'
+  import MyCard from './my-card'
   export default {
-    components: {Card},
+    components: {MyCard},
     name: 'my-dialog',
     props: {
       value: {
@@ -19,16 +19,13 @@
         required: true
       },
       title: {
-        type: String,
-        required: false
+        type: String
       },
       subtitle: {
-        type: String,
-        required: false
+        type: String
       },
       centerTitle: {
-        type: Boolean,
-        required: false
+        type: Boolean
       }
     },
     computed: {

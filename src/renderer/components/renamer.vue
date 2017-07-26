@@ -1,24 +1,23 @@
 <template>
-  <card title="Renamer" subtitle="Tags -> Filename">
+  <my-card title="Renamer" subtitle="Tags -> Filename">
     <folder-select :folder="folder"></folder-select>
 
     <folder-select-button :folder.sync="folder" slot="action-left"></folder-select-button>
 
-    <v-btn outline round @click.stop="renameButtonClick" :style="{color: btncolor}" :disabled="!folder"
-           slot="action-right">
-      Rename
-    </v-btn>
-  </card>
+    <my-btn slot="action-right" :disabled="!folder" outline @click.stop="renameButtonClick">Rename</my-btn>
+  </my-card>
 </template>
 
 <script>
   import FolderSelect from './folderSelect'
   import FolderSelectButton from './folderSelectButton'
   import Mp3Wizard from '../libs/mp3wizard'
-  import Card from './my-card'
+  import MyCard from './my-card'
+  import MyBtn from './my-btn'
   export default {
     components: {
-      Card,
+      MyBtn,
+      MyCard,
       FolderSelectButton,
       FolderSelect
     },
@@ -26,27 +25,6 @@
     data() {
       return {
         folder: ''
-      }
-    },
-    computed: {
-      btncolor() {
-        return this.bgcolor !== 'white' ? this.bgcolor : this.fcolor
-      },
-      bgcolor: {
-        get() {
-          return this.$store.state.backgroundColor
-        },
-        set(value) {
-          this.$store.commit('set_bg_color', value)
-        }
-      },
-      fcolor: {
-        get() {
-          return this.$store.state.fontColor
-        },
-        set(value) {
-          this.$store.commit('set_font_color', value)
-        }
       }
     },
     methods: {

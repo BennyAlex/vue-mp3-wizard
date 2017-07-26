@@ -9,7 +9,7 @@
     </v-layout>
   </v-toolbar>
     <div class="content-container">
-      <card title="Settings">
+      <my-card title="Settings">
         <v-layout row align-start wrap justify-center>
           <color-picker-wrapper label="Select font color" v-model="fcolor"></color-picker-wrapper>
 
@@ -17,7 +17,7 @@
 
           <color-picker-wrapper label="Select background color" v-model="bgcolor"></color-picker-wrapper>
         </v-layout>
-      </card>
+      </my-card>
     </div>
   </span>
 
@@ -25,7 +25,7 @@
 </template>
 
 <script>
-  import Card from '../my-card'
+  import MyCard from '../my-card'
   import ColorPickerWrapper from '../ColorPickerWrapper'
   import ColorPicker from '../ColorPicker/ColorPicker'
 
@@ -33,7 +33,7 @@
     components: {
       ColorPicker,
       ColorPickerWrapper,
-      Card
+      MyCard
     },
     name: 'settings',
     computed: {

@@ -5,33 +5,24 @@
     <my-dialog v-model="isOpen" :title="label">
       <color-picker v-model="_value"></color-picker>
     </my-dialog>
-
-    <!--<v-layout row justify-center>-->
-      <!--<v-dialog v-model="isOpen" width="auto" hide-overlay>-->
-        <!--<card title="Select a color">-->
-          <!--<color-picker v-model="value2"></color-picker>-->
-        <!--</card>-->
-      <!--</v-dialog>-->
-    <!--</v-layout>-->
   </div>
 </template>
 
 <script>
   import {ColorPicker} from './ColorPicker';
-  import Card from './my-card'
+  import MyCard from './my-card'
   import MyDialog from './my-dialog'
 
   export default {
     components: {
       MyDialog,
-      Card,
+      MyCard,
       ColorPicker
     },
     name: 'color-picker-wrapper',
     props: {
       label: {
         type: String,
-        required: false,
         default: 'Select a color'
       },
       value: {

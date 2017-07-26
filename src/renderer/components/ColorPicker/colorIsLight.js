@@ -12,7 +12,7 @@ const toRgb = (color) => {
   return {r: r, g: g, b: b}
 }
 
-export default function colorIsLight (color) {
+export default function colorIsLight (color, differenceRange) {
   let rgb = toRgb(color) // https://www.w3.org/TR/AERT#color-contrast
-  return ((rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000) > 220 // w3 says 125, but we want to have more white circles
+  return ((rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000) > (differenceRange || 125) // suggested by w3
 }

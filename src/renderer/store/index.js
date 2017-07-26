@@ -6,8 +6,8 @@ export default new Vuex.Store({
   state: {
     isLoading: false,
     mainColor: '#fb8c00',
-    fontColor: 'black',
-    bgColor: '#bbb',
+    fontColor: '#000000',
+    bgColor: '#bdbdbd',
     lastRoute: {},
     lastRouteName: ''
   },

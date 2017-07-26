@@ -25,19 +25,16 @@
 
 <script>
   export default {
-    name: 'card',
+    name: 'my-card',
     props: {
       title: {
-        type: String,
-        required: false
+        type: String
       },
       subtitle: {
-        type: String,
-        required: false
+        type: String
       },
       centerTitle: {
-        type: Boolean,
-        required: false
+        type: Boolean
       }
     }
   }
