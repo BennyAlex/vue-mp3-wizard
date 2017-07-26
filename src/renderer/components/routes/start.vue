@@ -12,14 +12,14 @@
     </v-tabs-bar>
 
     <v-tabs-content id='renamer'>
-      <v-container fluid>
+      <div class="content-container">
         <renamer></renamer>
-      </v-container>
+      </div>
     </v-tabs-content>
     <v-tabs-content id='tagger'>
-      <v-container fluid>
+      <div class="content-container">
         <tagger></tagger>
-      </v-container>
+      </div>
     </v-tabs-content>
   </v-tabs>
 </template>

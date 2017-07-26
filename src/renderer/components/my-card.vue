@@ -1,14 +1,14 @@
 <template>
   <v-card class="grey lighten-3 black--text" raised>
     <v-card-title primary-title>
-      <div>
-        <div class="headline" v-if="title">{{title}}</div>
+      <div :class="{center: centerTitle}">
+        <div class="headline bold" v-if="title">{{title}}</div>
         <span class="grey--text text--darken-1 font-17" v-if="subtitle">{{subtitle}}</span>
       </div>
     </v-card-title>
 
-    <v-container>
-      <slot name="content"></slot>
+    <v-container fluid>
+      <slot></slot>
     </v-container>
 
     <v-card-actions style="width: 100%">
@@ -33,6 +33,10 @@
       },
       subtitle: {
         type: String,
+        required: false
+      },
+      centerTitle: {
+        type: Boolean,
         required: false
       }
     }

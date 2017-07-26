@@ -1,21 +1,21 @@
 <template>
-    <card title="Renamer" subtitle="Tags -> Filename">
-        <folder-select :folder="folder" slot="content"></folder-select>
+  <card title="Renamer" subtitle="Tags -> Filename">
+    <folder-select :folder="folder"></folder-select>
 
-        <folder-select-button :folder.sync="folder" slot="action-left"></folder-select-button>
+    <folder-select-button :folder.sync="folder" slot="action-left"></folder-select-button>
 
-        <v-btn outline round @click.stop="renameButtonClick" :style="{color: btncolor}" :disabled="!folder"
-               slot="action-right">
-            Rename
-        </v-btn>
-    </card>
+    <v-btn outline round @click.stop="renameButtonClick" :style="{color: btncolor}" :disabled="!folder"
+           slot="action-right">
+      Rename
+    </v-btn>
+  </card>
 </template>
 
 <script>
   import FolderSelect from './folderSelect'
   import FolderSelectButton from './folderSelectButton'
   import Mp3Wizard from '../libs/mp3wizard'
-  import Card from './card'
+  import Card from './my-card'
   export default {
     components: {
       Card,

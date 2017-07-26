@@ -5,19 +5,16 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     isLoading: false,
-    dialogOpen: false,
     mainColor: '#fb8c00',
     fontColor: 'black',
-    bgColor: '#bbb'
+    bgColor: '#bbb',
+    lastRoute: {},
+    lastRouteName: ''
   },
 
   mutations: {
     set_is_loading (state, payload) {
       state.isLoading = payload
-    },
-
-    set_dialog_open (state, payload) {
-      state.dialogOpen = payload
     },
 
     set_font_color (state, payload) {
@@ -30,6 +27,11 @@ export default new Vuex.Store({
 
     set_main_color (state, payload) {
       state.mainColor = payload
+    },
+
+    set_last_route (state, payload) {
+      state.lastRoute = payload
+      state.lastRouteName = payload.name
     }
   },
 

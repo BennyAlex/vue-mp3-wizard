@@ -15,6 +15,10 @@
     cursor: pointer !important;
 }
 
+.bold {
+    font-weight: 900;
+}
+
 .underline {
     text-decoration: underline;
 }
@@ -66,4 +70,35 @@ html, body, #app {
 
 .default-color-text {
     color: #fb8c00;
+}
+
+.center {
+    margin: 0 auto;
+}
+
+.content-container {
+    max-width: 100%;
+    margin: 0.4% auto 0;
+    padding: 16px;
+}
+
+@media only screen and (min-width: 1024px) {
+    .content-container {
+        margin: 1.5% auto 0;
+        max-width: 91%;
+    }
+}
+
+@media only screen and (min-width: 1424px) {
+    .content-container {
+        margin: 1.6% auto 0;
+        max-width: 82%;
+    }
+}
+
+@media only screen and (min-width: 1904px) {
+    .content-container {
+        margin: 1.7% auto 0;
+        max-width: 68%;
+    }
 }

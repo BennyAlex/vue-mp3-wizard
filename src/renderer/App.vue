@@ -4,42 +4,55 @@
 
     <router-view></router-view>
 
-    <v-layout row justify-center>
-      <v-dialog v-model="dialogOpen" :persistent="isLoading">
-        <v-card>
-          <v-container fluid>
-            <v-layout align-center justify-space-around>
-              <h5 v-if="isLoading">
-                Loading, please wait...
-              </h5>
-              <h5 v-else>
-                <b>Process finished!</b>
-              </h5>
-              <v-progress-circular v-if="isLoading" indeterminate class="orange--text darken-1--text"
-                                   v-bind:size="58"
-                                   v-bind:width="4">
+    <my-dialog id="loading-dialog" v-model="isLoading" title="Loading, please wait..." :centerTitle="true">
+      <div>
+        <v-layout column align-center justify-space-around>
+          <v-progress-circular indeterminate class="orange--text darken-1--text"
+                               v-bind:size="58"
+                               v-bind:width="4">
+          </v-progress-circular>
+        </v-layout>
+      </div>
+    </my-dialog>
 
-              </v-progress-circular>
-            </v-layout>
-          </v-container>
+    <!--<v-layout row justify-center>-->
+    <!--<v-dialog v-model="dialogOpen" :persistent="isLoading" width="auto">-->
+    <!--<v-card>-->
+    <!--<v-container fluid>-->
+    <!--<v-layout column align-center justify-space-around>-->
+    <!--<h5 v-if="isLoading">-->
+    <!--Loading, please wait...-->
+    <!--</h5>-->
+    <!--<h5 v-else>-->
+    <!--<b>Process finished!</b>-->
+    <!--</h5>-->
+    <!--<v-progress-circular v-if="isLoading" indeterminate class="orange&#45;&#45;text darken-1&#45;&#45;text"-->
+    <!--v-bind:size="58"-->
+    <!--v-bind:width="4">-->
 
-          <v-card-actions v-if="!isLoading">
-            <v-spacer></v-spacer>
-            <v-btn flat class="orange--text darken-1--text" @click="dialogOpen = false">Close</v-btn>
-            <v-spacer></v-spacer>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-layout>
+    <!--</v-progress-circular>-->
+    <!--</v-layout>-->
+    <!--</v-container>-->
+
+    <!--<v-card-actions v-if="!isLoading">-->
+    <!--<v-spacer></v-spacer>-->
+    <!--<v-btn flat class="orange&#45;&#45;text darken-1&#45;&#45;text" @click="dialogOpen = false">Close</v-btn>-->
+    <!--<v-spacer></v-spacer>-->
+    <!--</v-card-actions>-->
+    <!--</v-card>-->
+    <!--</v-dialog>-->
+    <!--</v-layout>-->
   </v-app>
 </template>
 
 <script>
   import Navbar from './components/navbar'
+  import MyDialog from './components/my-dialog'
 
   export default {
     name: 'mp3-wizard',
     components: {
+      MyDialog,
       Navbar
     },
     data() {
@@ -65,14 +78,6 @@
           this.$store.commit('set_is_loading', value)
         }
       },
-      dialogOpen: {
-        get() {
-          return this.$store.state.dialogOpen
-        },
-        set(value) {
-          this.$store.commit('set_dialog_open', value)
-        }
-      },
       bgcolor: {
         get() {
           return this.$store.state.bgColor
@@ -80,6 +85,9 @@
         set(value) {
           this.$store.commit('set_bg_color', value)
         }
+      },
+      lastRoute() {
+        return this.$store.state.lastRoute
       }
     },
     methods: {
@@ -95,9 +103,13 @@
       settingsClick() {
         if (this.$route.name !== 'settings') {
           this.$router.push({name: 'settings'})
-          return
         }
-        this.$router.go(-1)
+        else if (this.$store.state.lastRouteName) {
+          this.$router.go(-1)
+        }
+        else {
+          this.$router.push({name: 'index'})
+        }
       }
     }
   }

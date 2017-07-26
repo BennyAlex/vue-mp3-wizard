@@ -1,6 +1,6 @@
 <template>
   <card title="Tagger" subtitle="Filename -> Tags">
-    <folder-select :folder="folder" slot="content"></folder-select>
+    <folder-select :folder="folder"></folder-select>
 
     <folder-select-button :folder.sync="folder" slot="action-left"></folder-select-button>
 
@@ -15,7 +15,7 @@
   import Mp3Wizard from '../libs/mp3wizard'
   import FolderSelect from './folderSelect'
   import FolderSelectButton from './folderSelectButton'
-  import Card from './card'
+  import Card from './my-card'
 
   export default {
     components: {
