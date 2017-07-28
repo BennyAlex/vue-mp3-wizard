@@ -75,7 +75,10 @@
         const palette = this.subPalette ? this.palette[this.subPalette] : this.palette
         const subName = this.subPalette ? this.subPalette + ' - ' : ''
         for (let [key, value] of Object.entries(palette)) {
-          colors.push({'name': subName + key, 'value': typeof value === 'string' ? value : value[this.defaultTint]})
+          colors.push({
+            name: subName + key,
+            value: typeof value === 'string' ? value : value[this.defaultTint]
+          })
         }
         return colors
       }
@@ -87,24 +90,15 @@
       }
     },
     created() {
-      console.log('created')
-      if (this.value) {
-        if (this.value.length === 7 && !this.selectedColorName) {
-          for (let [name, valueOrObject] of Object.entries(this.palette)) {
-            if (typeof valueOrObject === 'string') {
-              if (valueOrObject === this.value) {
-                this.selectedColorName = name
-                return
-              }
-            }
-            if (typeof valueOrObject === 'object') {
-              for (let value of Object.values(valueOrObject)) {
-                if (value === this.value) {
-                  this.selectedColorName = name
-                  return
-                }
-              }
-            }
+      if (!this.value || this.value.length !== 7 || this.selectedColorName) {
+        return
+      }
+      for (let [name, valueOrObject] of Object.entries(this.palette)) {
+        const values = typeof valueOrObject === 'string' ? [valueOrObject] : Object.values(valueOrObject)
+        for (let value of values) {
+          if (value === this.value) {
+            this.selectedColorName = name
+            return
           }
         }
       }
@@ -131,39 +125,33 @@
     float: left;
   }
 
-  .color:before {
+  .color:before,
+  .color:after {
     content: '';
     position: absolute;
-    width: 54px;
-    height: 54px;
-    margin: 0;
     border-radius: 50%;
-    border: 5px solid rgba(0, 0, 0, 0.15);
     opacity: 0;
     transition: opacity 0.25s;
   }
 
+  .color:before {
+    width: 54px;
+    height: 54px;
+    border: 5px solid rgba(0, 0, 0, 0.15);
+  }
+
   .color:after {
-    content: '';
-    position: absolute;
     width: 44px;
     height: 44px;
-    border-radius: 50%;
     margin: 5px;
     border: 3px solid white;
-    opacity: 0;
-    transition: opacity 0.25s;
   }
 
   .color.is-light:after {
     border-color: #555555;
   }
 
-  .color.selected:before {
-    transition: opacity 0.45s;
-    opacity: 1;
-  }
-
+  .color.selected:before,
   .color.selected:after {
     transition: opacity 0.45s;
     opacity: 1;
