@@ -17,7 +17,7 @@
       @click.stop="click(color)"
       class="color"
       :style="{background: color.value}"
-      :class="{selected: color.value === value || color.name === selectedColorName, 'is-light': colorIsLight(color.value)}"
+      :class="{selected: color.value === value || color.name === selectedColorName && Object.values(palette[selectedColorName]).includes(value), 'is-light': colorIsLight(color.value)}"
       :title="color.name">
     </div>
   </div>
