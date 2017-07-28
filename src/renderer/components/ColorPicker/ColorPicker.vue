@@ -17,7 +17,7 @@
       @click.stop="click(color)"
       class="color"
       :style="{background: color.value}"
-      :class="{selected: color.value === value || color.name === selectedColorName && Object.values(palette[selectedColorName]).includes(value), 'is-light': colorIsLight(color.value)}"
+      :class="{selected: color.value === value || isTintOfSelected(color), 'is-light': colorIsLight(color.value)}"
       :title="color.name">
     </div>
   </div>
@@ -58,9 +58,15 @@
       click(color) {
         if (this.useSpectrumPicker && typeof this.palette[color.name] === 'object') {
           this.subPalette = color.name
+          if (this.isTintOfSelected(color)) {
+            return
+          }
           this.selectedColorName = color.name
         }
         this.$emit('input', color.value)
+      },
+      isTintOfSelected(color) {
+        return this.selectedColorName === color.name && Object.values(this.palette[this.selectedColorName]).includes(this.value)
       }
     },
     computed: {
