@@ -1,7 +1,7 @@
 # mp3-wizard-electron
 An application to **tag** or **rename mp3's** automatically, build with VueJS, Electron & Javascript
 
-##Plans
+## Plans
 * add optional fetching tags from Discogs
 * tag and rename files in one procedure
 * MP3-Wizard mobile app
